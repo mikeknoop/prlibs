@@ -58,7 +58,7 @@ content = [
    ]
 ]
 
-@app.route('/')
+@app.route('/nocc')
 def index():
    html = pages.get_or_404('index').body
    html = html.replace("{{STATIC_URL}}", app.config['STATIC_URL'])
@@ -68,7 +68,7 @@ def index():
 
    STATIC_URL
 
-@app.route('/nocc')
+@app.route('/')
 def nocc():
    html = pages.get_or_404('index').body
    html = html.replace("{{STATIC_URL}}", app.config['STATIC_URL'])
