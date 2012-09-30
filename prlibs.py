@@ -144,7 +144,8 @@ def generate():
          )
 
    except Exception as error:
-      data['error'] = '(card not charged) {0}'.format(error)
+      #data['error'] = '(card not charged) {0}'.format(error)
+      data['error'] = '{0}'.format(error)
       return (simplejson.dumps(data), 400)
 
    return (simplejson.dumps(data), 200)
