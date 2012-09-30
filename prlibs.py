@@ -13,27 +13,27 @@ import stripe
 title = [
    [
       {
-         't': '{0} a company like {1} for {2} released new product',
+         't': '{0} a company like {1} for {2} released new product ',
          'v': ['company', 'similiar_company', 'NNS'],
          'p': False
       },
       {
-         't': '{0} backed by {1} pivots from {2} to focus on {3} {4}',
+         't': '{0} backed by {1} pivots from {2} to focus on {3} {4} ',
          'v': ['company', 'full_name', 'NNS', 'VB', 'NNS'],
          'p': False
       },
       {
-         't': '{0} by {1} is a brand new {2} launching for {3} {4} in the {5} space',
+         't': '{0} by {1} is a brand new {2} launching for {3} {4} in the {5} space ',
          'v': ['company', 'full_name', 'NN', 'JJ,JJR', 'NNS', 'NN'],
          'p': False
       },
       {
-         't': 'Super stealth startup {0} unveils their {1} {2} today',
+         't': 'Super stealth startup {0} unveils their {1} {2} today ',
          'v': ['company', 'JJ,JJR', 'NN'],
          'p': False
       },
       {
-         't': '{0} is dead, says a new startup {1} which promises {2} for {3}',
+         't': '{0} is dead, says a new startup {1} which promises {2} for {3} ',
          'v': ['NN', 'company', 'NNS', 'NN'],
          'p': False
       },
