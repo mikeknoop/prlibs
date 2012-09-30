@@ -13,12 +13,12 @@ import stripe
 title = [
    [
       {
-         't': '{0}, a company like {1} for {2}, launches new endeavour',
+         't': '{0} a company like {1} for {2} launches new endeavour',
          'v': ['company', 'similiar_company', 'NNS'],
          'p': False
       },
       {
-         't': '{0}, backed by {1} pivots from {2} to focus on {3} {4}',
+         't': '{0} backed by {1} pivots from {2} to focus on {3} {4}',
          'v': ['company', 'full_name', 'NNS', 'VB', 'NNS'],
          'p': False
       },   
