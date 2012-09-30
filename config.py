@@ -1,5 +1,0 @@
-DEBUG = True
-STRIPE_API_KEY = "vY3Uv4nAGtX8h6oCpzqH3aqYha71EhKQ"
-STRIPE_PUB_KEY = "pk_EJxFo0ddlQ72jbu3w9ejeSfXlxpZK"
-FLATPAGES_ROOT = "static"
-STATIC_URL = "static"
