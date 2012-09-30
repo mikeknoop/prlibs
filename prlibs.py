@@ -137,7 +137,7 @@ def generate():
 
          stripe.api_key = app.config['STRIPE_API_KEY']
          stripe.Charge.create(
-           amount=100,
+           amount=500,
            currency="usd",
            card=token,
            description="prlibs.com Starup PR Generator"
