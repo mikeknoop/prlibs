@@ -1,12 +1,11 @@
 from flask import Flask
 app = Flask(__name__)
-from flaskext.flatpages import FlatPages
+from flask_flatpages  import FlatPages
 
 #DEBUG = True
 #FLATPAGES_AUTO_RELOAD = DEBUG
 #FLATPAGES_EXTENSION = '.html'
 
-#app = Flask(__name__)
 #pages = FlatPages(app)
 
 @app.route("/")
