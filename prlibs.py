@@ -21,7 +21,12 @@ title = [
          't': '{0} backed by {1} pivots from {2} to focus on {3} {4}',
          'v': ['company', 'full_name', 'NNS', 'VB', 'NNS'],
          'p': False
-      },   
+      },
+      {
+         't': '{0} by {1} is a brand new {2} launching for {3} {4} in the {5} space',
+         'v': ['company', 'full_name', 'NN', 'JJ,JJR', 'NNS', 'NN'],
+         'p': False
+      },
    ]
 ]
 
@@ -36,6 +41,10 @@ content = [
       {
          't': '{0} makes it easy to {1} {2} without having to {3} {4} or {5} {6}.',
          'v': ['company', 'VB', 'NNS', 'VB', 'NNS', 'VB', 'NNS'],
+      },
+      {
+         't': '{0} is a great way to never do {1} again. With {2}, you be be more 10 times more {3} and {4}.',
+         'v': ['company', 'VB', 'company', 'JJ', 'JJ'],
       },
    ],
    [
