@@ -9,5 +9,9 @@ pages = FlatPages(app)
 def index():
    return pages.get_or_404('index').body
 
+@app.route('/success')
+def generate():
+   return pages.get_or_404('success').body
+
 if __name__ == "__main__":
    app.run()

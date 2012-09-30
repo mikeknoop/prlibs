@@ -1,33 +1,146 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="author" content="Startup PR Generator" />
+    <meta name="keywords" content="Startup, PR, Generator" />
+    <meta name="robots" content="all" />
+
+    <title>Startup PR Generator</title>
+
+    <link rel="icon" href="favicon.ico"/>
+    <link href="reset.css" rel="stylesheet" type="text/css"/>
+    <link href="font.css" rel="stylesheet" type="text/css"/>
+    <link href="common.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="underscore.js"></script>
   </head>
 
-  <body class="manage">
-    
+  <body class="index">
+
     <div class="container page drop-shadow curved curved-hz-2">
 
-      <div class="left">
-        <h1>Resources</h1>
-        <ul>
-          <li><a href="https://us2.admin.mailchimp.com/campaigns/" target="_blank">MailChimp</a></li>
-          <li>&nbsp;</li>
-          <li><a href="http://cafnr.missouri.edu/weather.php" target="_blank">Mizzou Weather</a></li>
-          <li><a href="http://calendar.missouri.edu" target="_blank">Mizzou Calendar</a></li>
-          <li><a href="http://stufftodo.missouri.edu/" target="_blank">Mizzou Stuff To Do</a></li>
-          <li><a href="http://mizzouwire.missouri.edu/" target="_blank">Mizzou News</a></li>
-          <li><a href="http://www.cf.missouri.edu/outages/" target="_blank">Mizzou Outages</a></li>
-          <li>&nbsp;</li>
-          <li><a href="https://www.google.com/calendar" target="_blank">Google Calendar</a></li>
-          <li><a href="https://docs.google.com/spreadsheet/ccc?key=0Ak7o6g9Ck9fNdGFldGs1eWY4ZnhObHJOLTJvVi1XeEE" target="_blank">Public Event Form</a></li>
-          <li>&nbsp;</li>
-          <li><a href="http://www.facebook.com/Mizzou" target="_blank">Mizzou on Facebook</a></li>
-          <li><a href="http://news.google.com/" target="_blank">Google News</a></li>      
-          <li><a href="http://www.showmeboone.com/oem/closures/" target="_blank">Columbia Road Closings</a></li>    
-          <li><a href="http://dining.missouri.edu" target="_blank">Dining</a></li>
-        </ul>
+      <div class="header">
+        <a href="/">
+          <p class="picture"><img src="logo.png" /></p>
+          <p class="name irregular-font">STARTUP PR <span class="accent">GENERATOR</span></p>
+        </a>
+          <h3 class="slogan">Generate startup launch articles<br />via madlibs style forms</h3>
       </div>
+
+      <div class="left">
+        <h1>Describe your startup</h1>
+        <form data-id="madlib"></form>
+        <div class="button" data-id="button" onclick="submit(); return false;">Generate PR Release</div>
+        <div class="error hide" data-id="error">Please complete all fields</div>
+      </div>
+
+      <div class="right">
+        <h1 class="title">Releases</h1>
+        <div class="content">
+          <p>See all previous <a href="http://prlibs.posterous.com">PR Releases here</a>.</p>
+        </div>
+
+        <h1 class="title">Crafted with Love</h1>
+        <div class="content">
+          <p>Mike Knoop &nbsp; (<a href="http://twitter.com/mikeknoop">@mikeknoop</a>)</p>
+          <p>Wade Foster &nbsp; (<a href="http://twitter.com/wadef">@wadef</a>)</p>
+        </div>
+
+        <h1 class="title">Powered By</h1>
+        <div class="content">
+          <a href="https://zapier.com" title="Powered by Zapier"><img src="zapier.png"></img></a>
+        </div>
+
+      </div>
+
       <div class="clearfix"></div>
+
     </div>
+
+  <div class="footer">
+    <div class="right">
+      <p>A Columbia MO Startup Weekend Project 2012</p>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+    var words = [
+     {key: "1", label: "Company Name"},
+     {key: "2", label: "Verb"},
+     {key: "3", label: "Adjective"},
+     {key: "4", label: "Plural Noun"},
+     {key: "5", label: "Event (eg. Startup Weekend)"},
+     {key: "6", label: "Verb"},
+     {key: "7", label: "Verb with -ing"},
+     {key: "8", label: "Adjective"},
+     {key: "9", label: "Noun"},
+     {key: "10", label: "Verb"},
+     {key: "11", label: "Plural Noun"},
+     {key: "12", label: "Verb"},
+     {key: "13", label: "Plural Noun"},
+     {key: "14", label: "Verb"},
+     {key: "15", label: "Plural Noun"},
+     {key: "16", label: "A First Name"},
+     {key: "17", label: "A Last Name"},
+     {key: "18", label: "Plural Profession (eg. cops, robbers)"},
+     {key: "19", label: "Adverb (anything ending in -ly)"},
+     {key: "20", label: "Verb"},
+     {key: "21", label: "Plural Noun"},
+     {key: "22", label: "Verb"},
+     {key: "23", label: "Plural Noun"},
+     {key: "24", label: "Verb"},
+     {key: "25", label: "Plural Noun"},
+     {key: "26", label: "A First Name"},
+     {key: "27", label: "A Last Name"},
+     {key: "28", label: "Noun"},
+     {key: "29", label: "Totally Different Company"},
+     {key: "30", label: "Plural Noun"},
+     {key: "31", label: "Twitter Handle"}
+    ]
+    var random = _.shuffle(words)
+    var stripe = 0
+    _.each(random, function (row) {
+      var which = "odd"
+      if (stripe == 0) {
+        var which = "even"
+        stripe = 1
+      } else {
+        stripe = 0
+      }
+      $('[data-id=madlib]').append("<div class=\"row "+which+"\"><label>"+row['label']+"</label><input id="+row['key']+" type=\"text\"></input></div>")
+    })
+    var done = function () {
+      // redirect
+      window.location.href = "success";
+    }
+    var actualsubmit = _.debounce(function () {
+      $('[data-id=error]').removeClass('hide').addClass('hide')
+      var data = {}
+      var error = false
+      $('[data-id=madlib]').find('input').each(function(each) {
+        data[$(this).attr('id')] = $(this).val()
+        if ($(this).val() === '') {
+          error = true
+        }
+      })
+      if (!error) {
+      $.ajax({
+        type: "POST",
+        url: "https://zapier.com/hooks/WebHookAPI/?sid=37587",
+        data: data,
+        success: done,
+        error: done,
+      })
+      } else {
+        $('[data-id=error]').removeClass('hide')
+      }
+    }, 1000, true)
+    var submit = function () {
+      $('[data-id=button]').removeClass('submitting').addClass('submitting').text('Generating...')
+      actualsubmit()
+    }
+    </script>
+
   </body>
 </html>
