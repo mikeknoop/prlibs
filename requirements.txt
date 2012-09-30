@@ -8,4 +8,6 @@ lxml==2.3.6
 nltk==2.0.3
 numpy==1.6.2
 requests==0.14.0
+simplejson==2.6.2
+stripe==1.7.4
 wsgiref==0.1.2
