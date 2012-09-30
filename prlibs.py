@@ -87,65 +87,65 @@ def success():
 @app.route('/generate')
 def generate():
 
-   try:
+   #try:
 
-      # imports
-      import requests
-      import nltk
-      import lxml
-      from lxml.html.clean import clean_html
-      data = {}
-      text = ""
+   # imports
+   import requests
+   import nltk
+   import lxml
+   from lxml.html.clean import clean_html
+   data = {}
+   text = ""
 
-      # fetch url, strip data down to just text
-      url = request.args.get('url', None)
-      if url:
-         r = requests.get(url)
-         if r.status_code != requests.codes.ok:
-            raise Exception('Could not get content from URL ('+r.status_code+')')
-         t = lxml.html.fromstring(r.content)
-         t = clean_html(t)
-         text += t.text_content()
-         text = text.encode('utf-8')
+   # fetch url, strip data down to just text
+   url = request.args.get('url', None)
+   if url:
+      r = requests.get(url)
+      if r.status_code != requests.codes.ok:
+         raise Exception('Could not get content from URL ('+r.status_code+')')
+      t = lxml.html.fromstring(r.content)
+      t = clean_html(t)
+      text += t.text_content()
 
-      # combine with hand passed text
-      text += request.args.get('text', '')
+   # combine with hand passed text
+   text += request.args.get('text', '')
+   text = text.encode('utf-8')
 
-      # naive replacing to help the tokenizer
-      text = text.replace("n't ", " not ")
+   # naive replacing to help the tokenizer
+   text = text.replace("n't ", " not ")
 
-      # tokenize text into part of speech
-      tokens = nltk.word_tokenize(text.lower())
-      t = nltk.Text(tokens)
-      all_tags = nltk.pos_tag(t)
-      #print ' '.join('%s %s' % x for x in all_tags)
+   # tokenize text into part of speech
+   tokens = nltk.word_tokenize(text.lower())
+   t = nltk.Text(tokens)
+   all_tags = nltk.pos_tag(t)
+   #print ' '.join('%s %s' % x for x in all_tags)
 
-      # combine tags with query params
-      for k in request.args.keys():
-         v = request.args.get(k, None)
-         all_tags.append((v, k))
+   # combine tags with query params
+   for k in request.args.keys():
+      v = request.args.get(k, None)
+      all_tags.append((v, k))
 
-      data['title'] = gen(title, all_tags, request)
-      data['content'] = gen(content, all_tags, request)
+   data['title'] = gen(title, all_tags, request)
+   data['content'] = gen(content, all_tags, request)
 
-      nocc = request.args.get('nocc', None)
-      if not nocc:
-         # cool it all worked, so lets charge the CC now
-         token = request.args.get('token', None)
-         if not token:
-            raise Exception('Missing CC details.')
+   nocc = request.args.get('nocc', None)
+   if not nocc:
+      # cool it all worked, so lets charge the CC now
+      token = request.args.get('token', None)
+      if not token:
+         raise Exception('Missing CC details.')
 
-         stripe.api_key = app.config['STRIPE_API_KEY']
-         stripe.Charge.create(
-           amount=100,
-           currency="usd",
-           card=token,
-           description="prlibs.com Starup PR Generator"
-         )
+      stripe.api_key = app.config['STRIPE_API_KEY']
+      stripe.Charge.create(
+        amount=100,
+        currency="usd",
+        card=token,
+        description="prlibs.com Starup PR Generator"
+      )
 
-   except Exception as error:
-      data['error'] = '(card not charged) {0}'.format(error)
-      return (simplejson.dumps(data), 400)
+   #except Exception as error:
+   #   data['error'] = '(card not charged) {0}'.format(error)
+   #   return (simplejson.dumps(data), 400)
 
    return (simplejson.dumps(data), 200)
 
