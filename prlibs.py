@@ -33,8 +33,8 @@ title = [
          'p': False
       },
       {
-         't': '{0} is dead, says a new startup {1} which promises {2} for {3} ',
-         'v': ['NN', 'company', 'NNS', 'NN'],
+         't': '{0}: {1} is dead, says new startup promising {2} for {3} ',
+         'v': ['company', 'NN', 'NNS', 'NN'],
          'p': False
       },
    ]
