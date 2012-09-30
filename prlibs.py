@@ -18,7 +18,7 @@ title = [
          'p': False
       },
       {
-         't': '{0}, backed by {1}, pivots from {2} to focus on {3} {4}',
+         't': '{0}, backed by {1} pivots from {2} to focus on {3} {4}',
          'v': ['company', 'full_name', 'NNS', 'VB', 'NNS'],
          'p': False
       },   
