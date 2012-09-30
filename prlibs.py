@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_flatpages  import FlatPages
 
+DEBUG = True
 FLATPAGES_EXTENSION = '.html'
 
 app = Flask(__name__)
