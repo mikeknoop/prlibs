@@ -1,3 +1,4 @@
 prlibsenv/*
 virtualenv.py
 virtualenv.pyc
+*.pyc
