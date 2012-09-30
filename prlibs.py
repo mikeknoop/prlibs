@@ -18,7 +18,7 @@ title = [
          'p': False
       },
       {
-         't': '{0} backed by {1} pivots from {2} to focus on {3} {4}',
+         't': '{0}, backed by {1}, pivots from {2} to focus on {3} {4}',
          'v': ['company', 'full_name', 'NNS', 'VB', 'NNS'],
          'p': False
       },   
@@ -115,7 +115,7 @@ def generate():
       text = text.replace("n't ", " not ")
 
       # tokenize text into part of speech
-      tokens = nltk.word_tokenize(text.lower())
+      tokens = nltk.word_tokenize(text)
       t = nltk.Text(tokens)
       all_tags = nltk.pos_tag(t)
       #print ' '.join('%s %s' % x for x in all_tags)
