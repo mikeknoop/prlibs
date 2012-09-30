@@ -4,4 +4,8 @@ Jinja2==2.6
 Markdown==2.2.0
 PyYAML==3.10
 Werkzeug==0.8.3
+lxml==2.3.6
+nltk==2.0.3
+numpy==1.6.2
+requests==0.14.0
 wsgiref==0.1.2
