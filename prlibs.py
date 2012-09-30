@@ -53,7 +53,7 @@ content = [
          'v': ['company', 'VB', 'NNS', 'VB', 'NNS', 'VB', 'NNS'],
       },
       {
-         't': '{0} is a great way to never do {1} again. With {2}, you be be more 10 times more {3} and {4}.',
+         't': '{0} is a great way to never do {1} again. With {2}, you be be more ten times more {3} and {4}.',
          'v': ['company', 'VB', 'company', 'JJ', 'JJ'],
       },
    ],
@@ -62,18 +62,30 @@ content = [
          't': 'Insider {0} said "{1} helps {2} by letting them {3} {4} {5}."',
          'v': ['full_name', 'company', 'NNS', 'RB', 'VB', 'NNS'],
       },
+      {
+         't': 'We asked for a quote from {0} but declined to comment on the recent {1}.',
+         'v': ['full_name', 'VBS'],
+      },
    ],
    [
       {
          't': 'Next up for {0} is to {1} the {2} and {3} the {4}.',
          'v': ['company', 'VB', 'NNS', 'VB', 'NNS'],
       },
+      {
+         't': 'The company said they were anticipating {0} {1} to be {2} sometime soon.',
+         'v': ['company', 'JJ,JJR', 'NNS', 'VBG'],
+      },
    ],
    [
       {
          't': 'One early customer told us that {0} had already helped solve his companies {1} problem.',
          'v': ['company', 'NNS'],
-      }
+      },
+      {
+         't': 'When asked about recent {0} activity, {1} spokesman stated they were {2} the {3}.',
+         'v': ['NN', 'company', 'VBG', 'NN'],
+      },
    ]
 ]
 
