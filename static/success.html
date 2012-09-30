@@ -8,12 +8,13 @@
 
     <title>Startup PR Generator</title>
 
-    <link rel="icon" href="favicon.ico"/>
-    <link href="reset.css" rel="stylesheet" type="text/css"/>
-    <link href="font.css" rel="stylesheet" type="text/css"/>
-    <link href="common.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="underscore.js"></script>
+    <link rel="icon" href="{{STATIC_URL}}/favicon.ico"/>
+    <link href="{{STATIC_URL}}/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="{{STATIC_URL}}/font.css" rel="stylesheet" type="text/css"/>
+    <link href="{{STATIC_URL}}/common.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{{STATIC_URL}}/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}/underscore.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
   </head>
 
   <body class="index">
@@ -22,7 +23,7 @@
 
       <div class="header">
         <a href="/">
-          <p class="picture"><img src="logo.png" /></p>
+          <p class="picture"><img src="{{STATIC_URL}}/logo.png" /></p>
           <p class="name irregular-font">STARTUP PR <span class="accent">GENERATOR</span></p>
         </a>
           <h3 class="slogan">Generate startup launch articles<br />via madlibs style forms</h3>
@@ -38,18 +39,27 @@
       <div class="right">
         <h1 class="title">Releases</h1>
         <div class="content">
-          <p>See all previous <a href="http://prlibs.posterous.com">PR Releases here</a>.</p>
+          <p>See all <a target="_new" href="http://prlibs.posterous.com">PR Releases here</a>.</p>
         </div>
 
-        <h1 class="title">Crafted with Love</h1>
+        <h1 class="title">Crafted in 54 hours</h1>
         <div class="content">
           <p>Mike Knoop &nbsp; (<a href="http://twitter.com/mikeknoop">@mikeknoop</a>)</p>
-          <p>Wade Foster &nbsp; (<a href="http://twitter.com/wadef">@wadef</a>)</p>
+          <p>Wade Foster &nbsp; (<a href="http://twitter.com/wadefoster">@wadefoster</a>)</p>
         </div>
 
-        <h1 class="title">Powered By</h1>
+        <h1 class="title">Partially Powered By</h1>
         <div class="content">
-          <a href="https://zapier.com" title="Powered by Zapier"><img src="zapier.png"></img></a>
+          <a href="https://zapier.com" title="Powered by Zapier"><img src="{{STATIC_URL}}/zapier.png"></img></a>
+        </div>
+
+        <h1 class="title">About</h1>
+        <div class="content">
+          <p>Is this for real? <span class="accent">Yes</span></p>
+          <p>Will my PR Release be public? <span class="accent">Yes</span></p>
+          <p>Will it sound funny, be ridiculous, and make me regret paying you? <span class="accent">Yes, Yes, No!</span></p>
+          <p>Are you seriously going to charge me for this? <span class="accent">Yes</span></p>
+          <p>But... why? <span class="accent">Because Startup Weekend</span></p>
         </div>
 
       </div>
@@ -58,11 +68,25 @@
 
     </div>
 
-  <div class="footer">
-    <div class="right">
-      <p>A Columbia MO Startup Weekend Project 2012</p>
+    <div class="footer">
+      <div class="right">
+        <p>A <a href="http://columbia.startupweekend.org/">Columbia MO Startup Weekend</a> Project 2012</p>
+      </div>
     </div>
-  </div>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-902738-11']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
 
   </body>
 </html>

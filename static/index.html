@@ -8,12 +8,13 @@
 
     <title>Startup PR Generator</title>
 
-    <link rel="icon" href="favicon.ico"/>
-    <link href="reset.css" rel="stylesheet" type="text/css"/>
-    <link href="font.css" rel="stylesheet" type="text/css"/>
-    <link href="common.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="underscore.js"></script>
+    <link rel="icon" href="{{STATIC_URL}}/favicon.ico"/>
+    <link href="{{STATIC_URL}}/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="{{STATIC_URL}}/font.css" rel="stylesheet" type="text/css"/>
+    <link href="{{STATIC_URL}}/common.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{{STATIC_URL}}/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}/underscore.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
   </head>
 
   <body class="index">
@@ -22,37 +23,65 @@
 
       <div class="header">
         <a href="/">
-          <p class="picture"><img src="logo.png" /></p>
+          <p class="picture"><img src="{{STATIC_URL}}/logo.png" /></p>
           <p class="name irregular-font">STARTUP PR <span class="accent">GENERATOR</span></p>
         </a>
           <h3 class="slogan">Generate startup launch articles<br />via madlibs style forms</h3>
       </div>
 
       <div class="left">
-        <h1>Describe your startup</h1>
-        <br>
-        <br>
-        <p>Posts your Press Release live to the blog</p>
+        <h1>Generate your own Startup PR</h1>
+        <h2>This posts your Press Release live to the blog!</h2>
         <form data-id="madlib"></form>
-        <div class="button" data-id="button" onclick="submit(); return false;">Generate PR Release</div>
-        <div class="error hide" data-id="error">Please complete all fields</div>
+
+        <div data-id="payment" class="payment-area {{NOCC}}">
+          <div class="price">
+            <div>Just</div> $1 <div>per PR Release</div>
+          </div>
+
+          <form data-id="cc" class="cc">
+            <input data-id="ccn" type="text" maxlength="20" autocomplete="off" class="card-number" placeholder="Credit Card Number" />
+            <input data-id="cvc" type="text" maxlength="4" autocomplete="off" class="card-cvc" placeholder="CVC" />
+            <input data-id="expm" type="text" maxlength="2" class="card-expiry-month" placeholder="Expires (MM)" />
+            <input data-id="expy" type="text" maxlength="4" class="card-expiry-year" placeholder="Expires (YYYY)" />
+          </form>
+          <div class="powered">Powered by <a target="_new" href="https://stripe.com/docs/stripe.js">Stripe.js</a></div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="submit-area">
+          <div class="button" data-id="button" onclick="submit(); return false;">Generate PR Now!</div>
+          <div class="error hide" data-id="error"></div>
+          <div class="clearfix"></div>
+        </div>
+
       </div>
 
       <div class="right">
         <h1 class="title">Releases</h1>
         <div class="content">
-          <p>See all previous <a href="http://prlibs.posterous.com">PR Releases here</a>.</p>
+          <p>See all <a target="_new" href="http://prlibs.posterous.com">PR Releases here</a>.</p>
         </div>
 
-        <h1 class="title">Crafted in 5 hours</h1>
+        <h1 class="title">Crafted in 54 hours</h1>
         <div class="content">
           <p>Mike Knoop &nbsp; (<a href="http://twitter.com/mikeknoop">@mikeknoop</a>)</p>
           <p>Wade Foster &nbsp; (<a href="http://twitter.com/wadefoster">@wadefoster</a>)</p>
         </div>
 
-        <h1 class="title">Powered By</h1>
+        <h1 class="title">Partially Powered By</h1>
         <div class="content">
-          <a href="https://zapier.com" title="Powered by Zapier"><img src="zapier.png"></img></a>
+          <a href="https://zapier.com" title="Powered by Zapier"><img src="{{STATIC_URL}}/zapier.png"></img></a>
+        </div>
+
+        <h1 class="title">About</h1>
+        <div class="content">
+          <p>Is this for real? <span class="accent">Yes</span></p>
+          <p>Will my PR Release be public? <span class="accent">Yes</span></p>
+          <p>Will it sound funny, be ridiculous, and make me regret paying you? <span class="accent">Yes, Yes, No!</span></p>
+          <p>Are you seriously going to charge me for this? <span class="accent">Yes</span></p>
+          <p>But... why? <span class="accent">Because Startup Weekend</span></p>
         </div>
 
       </div>
@@ -61,49 +90,24 @@
 
     </div>
 
-  <div class="footer">
-    <div class="right">
-      <p>A Columbia MO Startup Weekend Project 2012</p>
+    <div class="footer">
+      <div class="right">
+        <p>A <a href="http://columbia.startupweekend.org/">Columbia MO Startup Weekend</a> 2012</p>
+      </div>
     </div>
-  </div>
 
     <script type="text/javascript">
+    Stripe.setPublishableKey('{{STRIPE_PUB_KEY}}')
+    var release = {}
     var words = [
-     {key: "1", label: "Company Name"},
-     {key: "2", label: "Verb"},
-     {key: "3", label: "Adjective"},
-     {key: "4", label: "Noun (Plural)"},
-     {key: "5", label: "Event (eg. Startup Weekend)"},
-     {key: "6", label: "Verb"},
-     {key: "7", label: "Verb with -ing"},
-     {key: "8", label: "Adjective"},
-     {key: "9", label: "Noun (Plural)"},
-     {key: "10", label: "Verb"},
-     {key: "11", label: "Noun (Plural)"},
-     {key: "12", label: "Verb"},
-     {key: "13", label: "Noun (Plural)"},
-     {key: "14", label: "Verb"},
-     {key: "15", label: "Noun (Plural)"},
-     {key: "16", label: "A First Name"},
-     {key: "17", label: "A Last Name"},
-     {key: "18", label: "Profession (Plural) (eg. cops, robbers)"},
-     {key: "19", label: "Adverb (anything ending in -ly)"},
-     {key: "20", label: "Verb"},
-     {key: "21", label: "Noun (Plural)"},
-     {key: "22", label: "Verb"},
-     {key: "23", label: "Noun (Plural)"},
-     {key: "24", label: "Verb"},
-     {key: "25", label: "Noun (Plural)"},
-     {key: "26", label: "A First Name"},
-     {key: "27", label: "A Last Name"},
-     {key: "28", label: "Noun"},
-     {key: "29", label: "Totally Different Company"},
-     {key: "30", label: "Noun (Plural)"},
-     {key: "31", label: "Twitter Handle (include @)"}
+      {key: "url", label: "Company URL (Blog URL works best)"},
+      {key: "company", label: "Name of Company"},
+      {key: "similiar_company", label: "Name of a similiar Company"},
+      {key: "full_name", label: "Your Full Name"},
+      {key: "text", label: "Extra phrases (optional)"},
     ]
-    var random = _.shuffle(words)
     var stripe = 0
-    _.each(random, function (row) {
+    _.each(words, function (row) {
       var which = "odd"
       if (stripe == 0) {
         var which = "even"
@@ -113,36 +117,97 @@
       }
       $('[data-id=madlib]').append("<div class=\"row "+which+"\"><label>"+row['label']+"</label><input id="+row['key']+" type=\"text\"></input></div>")
     })
-    var done = function () {
+    var reset = function () {
+      $('[data-id=button]').removeClass('submitting').text('Generate PR Now!')
+    }
+    var redirect = function () {
       // redirect
       window.location.href = "success";
     }
-    var actualsubmit = _.debounce(function () {
-      $('[data-id=error]').removeClass('hide').addClass('hide')
+    var generate = function () {
+      $.ajax({
+        type: "GET",
+        url: "/generate",
+        data: release,
+        success: generated,
+        complete: complete,
+      })
+    }
+    var striped = function (status, response) {
+      if (response.error) {
+          reset()
+          $('[data-id=error]').removeClass('hide').text(response.error.message)
+      } else {
+        $('[data-id=button]').removeClass('submitting').addClass('submitting').text('Generating...')
+        token = response['id']
+        release['token'] = token
+        generate()
+      }
+    }
+    var generated = function (data) {
+      // 200, data response come as json and are parsed
+      json = JSON.parse(data)
+      $('[data-id=button]').removeClass('submitting').addClass('submitting').text('Submitting...')
+      console.log(1)
+      console.log(json)
+      $.ajax({
+        type: "POST",
+        url: "https://zapier.com/hooks/WebHookAPI/?sid=37670",
+        data: json,
+        success: redirect,
+        error: redirect,
+      })
+    }
+    var complete = function (xhr) {
+      if (typeof xhr !== "undefined" && xhr !== null) {
+        data = JSON.parse(xhr.responseText) // 400 errors come as plain text
+        if (typeof data.error !== "undefined" && data.error !== null) {
+          $('[data-id=error]').removeClass('hide').text(data['error'])
+          reset()
+        }
+      }
+    }
+    var submit = function () {
+      if ($('[data-id=button]').hasClass('submitting'))
+        return
+      $('[data-id=button]').removeClass('submitting').addClass('submitting').text('Processing...')
+      $('[data-id=error]').removeClass('hide').addClass('hide').text('Please complete all fields')
       var data = {}
       var error = false
       $('[data-id=madlib]').find('input').each(function(each) {
         data[$(this).attr('id')] = $(this).val()
-        if ($(this).val() === '') {
-          error = true
-        }
+        //if ($(this).val() === '') { error = true }
       })
-      if (!error) {
-      $.ajax({
-        type: "POST",
-        url: "https://zapier.com/hooks/WebHookAPI/?sid=37587",
-        data: data,
-        success: done,
-        error: done,
-      })
+      release = data
+      if (!error && !$('[data-id=payment]').hasClass('hide')) {
+        Stripe.createToken({
+          number: $('[data-id=ccn]').val(),
+          cvc: $('[data-id=cvc]').val(),
+          exp_month: $('[data-id=expm]').val(),
+          exp_year: $('[data-id=expy]').val()
+        }, striped);
+      } else if (!error) {
+        release['nocc'] = "True"
+        generate()
       } else {
         $('[data-id=error]').removeClass('hide')
+        reset()
       }
-    }, 1000, true)
-    var submit = function () {
-      $('[data-id=button]').removeClass('submitting').addClass('submitting').text('Generating...')
-      actualsubmit()
     }
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-902738-11']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
     </script>
 
   </body>
