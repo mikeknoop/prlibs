@@ -94,7 +94,7 @@ content = [
 ]
 
 @app.route('/nocc')
-def index():
+def nocc():
    html = pages.get_or_404('index').body
    html = html.replace("{{STATIC_URL}}", app.config['STATIC_URL'])
    html = html.replace("{{STRIPE_PUB_KEY}}", app.config['STRIPE_PUB_KEY'])
@@ -104,7 +104,7 @@ def index():
    STATIC_URL
 
 @app.route('/')
-def nocc():
+def index():
    html = pages.get_or_404('index').body
    html = html.replace("{{STATIC_URL}}", app.config['STATIC_URL'])
    html = html.replace("{{STRIPE_PUB_KEY}}", app.config['STRIPE_PUB_KEY'])
