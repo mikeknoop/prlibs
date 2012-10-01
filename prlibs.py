@@ -34,7 +34,7 @@ title = [
       },
       {
          't': '{0}: {1} is dead, says new startup promising {2} for {3} ',
-         'v': ['company', 'NN', 'NNS', 'NN'],
+         'v': ['company', 'NN', 'NNS', 'NNS'],
          'p': False
       },
    ]
