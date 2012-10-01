@@ -93,7 +93,7 @@ content = [
    ]
 ]
 
-@app.route('/')
+@app.route('/nocc')
 def index():
    html = pages.get_or_404('index').body
    html = html.replace("{{STATIC_URL}}", app.config['STATIC_URL'])
@@ -103,7 +103,7 @@ def index():
 
    STATIC_URL
 
-@app.route('/nocc')
+@app.route('/')
 def nocc():
    html = pages.get_or_404('index').body
    html = html.replace("{{STATIC_URL}}", app.config['STATIC_URL'])
@@ -179,7 +179,8 @@ def generate():
          )
 
    except Exception as error:
-      data['error'] = '(card not charged) {0}'.format(error)
+      #data['error'] = '(card not charged) {0}'.format(error)
+      data['error'] = '{0}'.format(error)
       return (simplejson.dumps(data), 400)
 
    return (simplejson.dumps(data), 200)
