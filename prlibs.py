@@ -46,6 +46,10 @@ content = [
          't': '{0}, the startup that allows you to {1} {2} {3}, officially opened its doors today. The startup seeks to {4} {5} by {6} {7} {8}.',
          'v': ['company', 'VB', 'JJ,JJR', 'NNS', 'VB', 'NNS', 'VBG', 'JJ,JJR', 'NNS'],
       },
+      {
+         't': '{0} is a new company that enabled anyone to {1} {2} {3}. Straight out of a {4}, the startup seeks to {5} {6} by {7} {8} {9}.',
+         'v': ['company', 'VB', 'JJ,JJR', 'NNS', 'NN', 'VB', 'NNS', 'VBG', 'JJ,JJR', 'NNS'],
+      },
    ],
    [
       {
